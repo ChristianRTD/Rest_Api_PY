@@ -21,7 +21,7 @@ def get_task(task_id):
         return jsonify({"error": "Task not found"}), 404
     return jsonify(task)
 
-# Ruta para crear una nueva tarea
+# Ruta para agregar una nueva tarea
 @app.route('/tasks', methods=['POST'])
 def create_task():
     data = request.get_json()
@@ -34,7 +34,7 @@ def create_task():
     tasks.append(new_task)
     return jsonify(new_task), 201
 
-# Ruta para actualizar una tarea existente
+# Ruta para actualizar una tarea
 @app.route('/tasks/<int:task_id>', methods=['PUT'])
 def update_task(task_id):
     task = next((t for t in tasks if t["id"] == task_id), None)
